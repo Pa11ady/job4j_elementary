@@ -1,6 +1,7 @@
 package ru.job4j.array;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ArrayCharTest {
@@ -18,5 +19,21 @@ public class ArrayCharTest {
         char[] pref = {'H', 'i'};
         boolean result = ArrayChar.startsWith(word, pref);
         assertThat(result).isFalse();
+    }
+
+    @Test
+    public void whenPrefixMoreWordThenFalse() {
+        char[] word = {'H', 'e'};
+        char[] pref = {'H', 'e', 'l', 'l', 'o'};
+        boolean result = ArrayChar.startsWith(word, pref);
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    public void whenPrefixEqualWordThenFalse() {
+        char[] word = {'H', 'e'};
+        char[] pref = {'H', 'e'};
+        boolean result = ArrayChar.startsWith(word, pref);
+        assertThat(result).isTrue();
     }
 }
